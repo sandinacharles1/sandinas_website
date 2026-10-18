@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sandina Charles — Computer Engineering &amp; Backend Development</title>
+<style>
+:root{
+  --head:#4a2c20; --head2:#6b4130; --cream:#f3e9c8; --pill:#f6ecdc; --pill-t:#4a2c20;
+  --nav:#d9c7b0; --nav-t:#3b2418; --bg1:#f3dfd0; --bg2:#fbf6f0; --text:#2b2220; --muted:#6d5d56;
+  --red:#a3231b; --rule:#d8c6b4; --link:#2b2220;
+  color-scheme: light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --head:#2a1810; --head2:#3d251a; --nav:#4a382c; --nav-t:#f1e4d3; --bg1:#2a1d19; --bg2:#1c1513;
+    --text:#efe5dc; --muted:#b8a79b; --red:#e0685e; --rule:#4d3a30; --link:#efe5dc; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --head:#2a1810; --head2:#3d251a; --nav:#4a382c; --nav-t:#f1e4d3; --bg1:#2a1d19; --bg2:#1c1513;
+  --text:#efe5dc; --muted:#b8a79b; --red:#e0685e; --rule:#4d3a30; --link:#efe5dc; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 "Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:var(--text);
+  background:linear-gradient(115deg,var(--bg1),var(--bg2) 55%) fixed;}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* header */
+header{background:
+  radial-gradient(circle at 12% 30%,rgba(243,233,200,.16) 0 2px,transparent 3px) 0 0/46px 46px,
+  radial-gradient(circle at 60% 70%,rgba(243,233,200,.12) 0 1.5px,transparent 2.5px) 0 0/62px 62px,
+  linear-gradient(100deg,var(--head),var(--head2) 50%,var(--head));
+  position:relative;overflow:hidden;padding:18px 20px 16px;min-height:178px;color:var(--cream)}
+header svg.fl{position:absolute;pointer-events:none;opacity:.9}
+.brand{display:flex;align-items:center;gap:14px;position:relative}
+.orb{width:58px;height:58px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 35% 30%,#fff7e6,#e6d3b0 45%,#a98660);
+  box-shadow:inset -4px -5px 8px rgba(80,50,30,.35),0 2px 6px rgba(0,0,0,.4)}
+h1.title{font:400 clamp(28px,5vw,44px)/1.1 Georgia,"Times New Roman",serif;margin:0;text-shadow:0 2px 3px rgba(0,0,0,.45);color:#fbf1d6}
+.tag{font:italic 15px Georgia,serif;opacity:.85;margin:2px 0 0 2px}
+.userbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px;position:relative}
+.avatar{width:70px;height:70px;border:2px solid var(--cream);border-radius:3px;flex:none;
+  background:linear-gradient(135deg,#2b1a12,#7a5a3a 55%,#e8d8b4);display:grid;place-items:center;
+  font:700 26px Georgia,serif;color:#fbf1d6;letter-spacing:1px}
+.pill{background:var(--pill);color:var(--pill-t);border:1px solid #cdb79b;border-radius:18px;padding:5px 14px;
+  font-size:15px;text-decoration:none;box-shadow:0 1px 0 #fff8 inset,0 1px 3px rgba(0,0,0,.35);cursor:pointer;font-family:inherit}
+.pill:hover{background:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pill{background:#e9d9c4}}
+:root[data-theme="dark"] .pill{background:#e9d9c4}
+
+/* nav */
+nav{background:var(--nav);border-bottom:1px solid #0003;border-top:1px solid #0002;display:flex;flex-wrap:wrap;
+  align-items:center;gap:4px 22px;padding:8px 20px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav a{color:var(--nav-t);text-decoration:none;font-size:16px;padding:2px 0}
+nav a:hover{text-decoration:underline}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--head);z-index:10}
+
+main{max-width:880px;margin:0 auto;padding:26px 20px 60px}
+h2{font:italic 400 clamp(26px,4vw,32px)/1.2 Georgia,"Times New Roman",serif;margin:38px 0 14px;
+  border-bottom:1px solid var(--rule);padding-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h2 .orn{font-style:normal;font-size:.8em;letter-spacing:2px;color:var(--muted)}
+h2 .side{font:italic 16px Georgia,serif;text-decoration:underline;color:var(--muted)}
+p{margin:0 0 12px}
+.lead{font-size:17px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;list-style:none;padding:0;margin:0}
+.cols li{padding:4px 0}
+.cols li::before{content:"» ";color:var(--red)}
+.cols b{font-weight:600}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+
+article.entry{padding:14px 0 16px;border-bottom:1px solid var(--rule)}
+article.entry h3{font:400 19px/1.3 Georgia,serif;margin:0 0 4px;text-decoration:underline;text-underline-offset:3px}
+.meta{font:13px/1.4 "Courier New",Menlo,monospace;color:var(--muted);margin-bottom:8px}
+article.entry ul{margin:6px 0 8px;padding-left:20px}
+article.entry li{margin-bottom:5px}
+.stack{font-size:14px;color:var(--muted)}
+.more{text-align:right;margin:0}
+.more a{font-weight:600}
+mark{background:#f2d27a;color:#2b2220}
+.empty{display:none;color:var(--muted);font-style:italic}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:26px 20px calc(30px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--rule)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <svg class="fl" style="right:-30px;top:-20px" width="360" height="190" viewBox="0 0 360 190" fill="none" stroke="#f3e9c8" stroke-width="2" aria-hidden="true">
+    <path d="M10 170c60-10 80-90 150-100s90 40 60 70-70 10-60-30 80-60 140-40"/>
+    <path d="M40 30c30 10 40 40 20 60s-50 10-40-20 40-40 80-30"/>
+    <g fill="#f3e9c8" fill-opacity=".85" stroke="none"><circle cx="270" cy="60" r="9"/><circle cx="290" cy="45" r="7"/><circle cx="292" cy="72" r="7"/><circle cx="250" cy="44" r="7"/><circle cx="252" cy="76" r="7"/></g>
+    <path d="M110 150l8 14 14-8-8-14z" fill="#f3e9c8" fill-opacity=".5" stroke="none"/>
+  </svg>
+  <svg class="fl" style="left:230px;top:6px" width="120" height="70" viewBox="0 0 120 70" aria-hidden="true">
+    <path d="M30 58C0 30 22 6 40 20c10-18 40-10 30 14-6 14-26 24-40 24z" fill="#cdb48a" fill-opacity=".7"/>
+    <path d="M80 50C60 30 78 12 90 22c8-12 28-6 22 10-4 10-18 18-32 18z" fill="#cdb48a" fill-opacity=".55"/>
+  </svg>
+  <div class="brand">
+    <div class="orb" aria-hidden="true"></div>
+    <div>
+      <h1 class="title">Sandina Charles</h1>
+      <p class="tag">Computer engineering · backend · secure data systems</p>
+    </div>
+  </div>
+  <div class="userbar">
+    <div class="avatar" aria-hidden="true">SC</div>
+    <a class="pill" href="#about">Hi, I’m Sandina ♫</a>
+    <a class="pill" href="mailto:SandinaCharles1@gmail.com">Contact ♫</a>
+    <a class="pill" href="https://github.com/sandinacharles1" target="_blank" rel="noopener">GitHub ♫</a>
+    <a class="pill" href="https://www.linkedin.com/in/sandinacharles1" target="_blank" rel="noopener">Linkedin ♫</a>
+    <button class="pill" id="theme" type="button" aria-label="Toggle light or dark theme">Theme ♫</button>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#research">Publications</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+</nav>
+
+<main>
+  <section id="about" class="searchable">
+    <h2>About me <span class="orn">❀.ೃ࿐*</span></h2>
+    <p class="lead">I’m a 16-year-old computer engineering junior  at Florida Atlantic University focused on backend engineering and secure data systems.</p>
+    <p>A highlight of my year: my paper, <em>Automated Litter Characterization for Smart Cities</em>, was accepted for presentation at <strong>IEEE SmartSys 2026</strong> in Messina, Italy. It grew out of my computer vision research at FAU I-SENSE. Previously, me and my team have presented at FAU's Office of Undergraduate Research Symposium after winning their $1,200 grant.</p>
+    <p>I also did embedded systems work at I-SENSE: I configured Nexmon on a Raspberry Pi Zero for monitor mode and probe injection, secured probe-request data with SHA-256 hashing, salting, and AES encryption, and integrated GPS and haptic modules over I2C into a real-time location monitor and risk notifier.</p>
+    <p>Every day I work on sharpening my system design knowledge and putting it into practice by learning how to build scalable, efficient systems. Right now that’s Sandinify, a music upload, listening, and audio-editing platform I’m currently have built with Spring Boot, PostgreSQL, Redis, and Docker. I’m based in Lauderdale Lakes, Florida, and expect to graduate in May 2028.</p>
+  </section>
+
+  <section id="skills" class="searchable">
+    <h2>Skills <span class="orn">❀.ೃ࿐*</span></h2>
+    <ul class="cols">
+      <li><b>Languages:</b> Java, Python, C++, JavaScript, SQL, HTML/CSS, MATLAB</li>
+      <li><b>Frameworks:</b> Spring Boot, Spring Data JPA/Hibernate, Spring Security, FastAPI, Flask, Pydantic, React.js</li>
+      <li><b>Backend &amp; infrastructure:</b> REST APIs, PostgreSQL, Redis, Docker, Docker Compose, token-bucket rate limiting, Maven</li>
+      <li><b>Security:</b> Argon2id, SHA-256, AES, salting, secrets management, packet analysis (Scapy)</li>
+      <li><b>Tools:</b> Git/GitHub, Linux command line, Raspberry Pi, Nexmon, I2C, Roboflow</li>
+    </ul>
+  </section>
+
+  <section id="research">
+    <h2>Publications &amp; honors <span class="orn">❀.ೃ࿐*</span></h2>
+    <article class="entry searchable">
+      <h3>Automated Litter Characterization for Smart Cities</h3>
+      <div class="meta">Poster, accepted &nbsp; IEEE SmartSys 2026, Messina, Italy &nbsp; June 2026</div>
+    </article>
+    <article class="entry searchable">
+      <h3>LitterNet: Video-Based Litter Detection and Classification</h3>
+      <div class="meta">Co-author, poster &nbsp; FAU Undergraduate Research Symposium &nbsp; April 2026</div>
+    </article>
+    <article class="entry searchable">
+      <h3>FAU Undergraduate Research Grant ($1,200)</h3>
+      <div class="meta">Office of Undergraduate Research and Inquiry &nbsp; Fall 2025</div>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Projects <span class="side">All projects</span></h2>
+    <article class="entry searchable">
+      <h3>Sandinify: Music Uploading, Listening, and DSP Editor Platform</h3>
+      <div class="meta">Started: Sep 2026 &nbsp; Status: In progress &nbsp; <a href="https://github.com/sandinacharles1/Sandinify" target="_blank" rel="noopener">Code</a></div>
+      <ul>
+        <li>Blocks brute-force attempts and request flooding with a Redis-backed token-bucket rate limiter (100-token capacity, 0.5 tokens/s refill) built as a Spring Boot filter that returns HTTP 429. An atomic Lua script keeps concurrent requests from racing.</li>
+        <li>Handles authentication and authorization with signup and login REST endpoints, JWT access tokens (HS256, 15-minute expiry), and refresh tokens, using Spring Data JPA/Hibernate, PostgreSQL, and Argon2id password hashing.</li>
+        <li>Starts with one command: the API, PostgreSQL, and Redis run together in Docker Compose, and the React.js login screen is built.</li>
+      </ul>
+      <div class="stack">Java · Spring Boot · Hibernate/JPA · PostgreSQL · Redis · Docker Compose · React.js</div>
+    </article>
+    <article class="entry searchable">
+      <h3>Anime Finder</h3>
+      <div class="meta">Status: In progress &nbsp; <a href="https://github.com/sandinacharles1/AniMae" target="_blank" rel="noopener">Code</a></div>
+      <ul>
+        <li>Built a FastAPI login endpoint with Pydantic request validation and Argon2id hashing, tuned for time, memory, parallelism, and salt.</li>
+        <li>Connected the Jikan REST API with JavaScript GET requests to power anime search across a multi-page HTML/CSS front end.</li>
+      </ul>
+      <div class="stack">Python · FastAPI · Pydantic · Argon2id · JavaScript · Jikan REST API</div>
+    </article>
+  </section>
+
+  <section id="experience">
+    <h2>Experience <span class="orn">❀.ೃ࿐*</span></h2>
+    <article class="entry searchable">
+      <h3>Embedded Systems Intern, FAU I-SENSE</h3>
+      <div class="meta">Jan 2026 – May 2026 &nbsp; Boca Raton, FL</div>
+      <ul>
+        <li>Protected probe-request data sent to the MobIntel Guardian real-time risk detection sensor with SHA-256 hashing, per-record salting, and AES encryption in Python and Scapy.</li>
+        <li>Set up Nexmon on a Raspberry Pi Zero for monitor mode and probe injection, and tested from the Linux command line.</li>
+        <li>Connected GPS and haptic modules over I2C into a real-time location monitor and risk notifier.</li>
+      </ul>
+    </article>
+    <article class="entry searchable">
+      <h3>REU Fellow / Computer Vision Researcher, FAU I-SENSE (NSF-funded)</h3>
+      <div class="meta">Aug 2025 – May 2026 &nbsp; Boca Raton, FL</div>
+      <ul>
+        <li>Relabeled 700 images from the TACO and Plastopol datasets in Roboflow for litter classification within the NSF Center for Smart Streetscapes (CS3), supporting fewer false positives and false negatives.</li>
+        <li>Reviewed prior research to guide algorithm choices for smart city sensing, including optical flow for background-noise reduction, and identified suitable datasets.</li>
+      </ul>
+    </article>
+    <article class="entry searchable">
+      <h3>Human Resources Personal Assistant Intern, Dynamic Integrated Security</h3>
+      <div class="meta">Jun 2025 – Aug 2025 &nbsp; Coral Springs, FL</div>
+      <ul><li>Maintained confidential employee records and compliance documents, and supported audits.</li></ul>
+    </article>
+    <article class="entry searchable">
+      <h3>College Algebra Tutor, Florida Atlantic University</h3>
+      <ul><li>Tutored students in college algebra.</li></ul>
+    </article>
+  </section>
+
+  <section id="education" class="searchable">
+    <h2>Education <span class="orn">❀.ೃ࿐*</span></h2>
+    <article class="entry">
+      <h3>Florida Atlantic University</h3>
+      <div class="meta">B.S. in Computer Engineering &nbsp; Expected May 2028 &nbsp; GPA: 3.916 &nbsp; Boca Raton, FL</div>
+      <p>Relevant coursework: Software Design, Data Science, Signals and Filter Design, C++, Python.</p>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <a href="mailto:SandinaCharles1@gmail.com">SandinaCharles1@gmail.com</a> ·
+  <a href="https://linkedin.com/in/sandinacharles" target="_blank" rel="noopener">LinkedIn</a> ·
+  <a href="https://github.com/sandinacharles1" target="_blank" rel="noopener">GitHub</a>
+  <p>Designed with a nod to the Archive of Our Own. © 2026 Sandina Charles</p>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+
+})();
+</script>
+</body>
+</html>
